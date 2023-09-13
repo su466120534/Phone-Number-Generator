@@ -18,10 +18,10 @@ export type IConfigSenceProps = {
 
 const getPlaceHolder = (key) => {
   switch (key) {
-    case 'key1': // 请替换为第一个输入框的实际key值
-      return 'For Example: United States'; // 替换为你想要的第一个输入框的默认内容
-    case 'key2': // 请替换为第二个输入框的实际key值
-      return 'For Example: 3'; // 替换为你想要的第二个输入框的默认内容
+    case 'CountryName': 
+      return 'For Example: United States'; 
+    case 'HowManyNumbers': 
+      return 'For Example: 3'; 
     default:
       return key;
   }
