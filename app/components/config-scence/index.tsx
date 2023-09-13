@@ -15,6 +15,18 @@ export type IConfigSenceProps = {
   onInputsChange: (inputs: Record<string, any>) => void
   onSend: () => void
 }
+
+const getPlaceHolder = (key) => {
+  switch (key) {
+    case 'key1': // 请替换为第一个输入框的实际key值
+      return 'For Example: United States'; // 替换为你想要的第一个输入框的默认内容
+    case 'key2': // 请替换为第二个输入框的实际key值
+      return 'For Example: 3'; // 替换为你想要的第二个输入框的默认内容
+    default:
+      return key;
+  }
+}
+
 const ConfigSence: FC<IConfigSenceProps> = ({
   promptConfig,
   inputs,
@@ -54,7 +66,7 @@ const ConfigSence: FC<IConfigSenceProps> = ({
                   <input
                     type="text"
                     className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 "
-                    placeholder={`${item.name}${!item.required ? `(${t(' For Example: United States')})` : ''}`}
+                    placeholder={getPlaceHolder(item.key)}
                     value={inputs[item.key]}
                     onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                     maxLength={item.max_length || DEFAULT_VALUE_MAX_LEN}
@@ -63,7 +75,7 @@ const ConfigSence: FC<IConfigSenceProps> = ({
                 {item.type === 'paragraph' && (
                   <textarea
                     className="block w-full h-[104px] p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 "
-                    placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                    placeholder={getPlaceHolder(item.key)}
                     value={inputs[item.key]}
                     onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                   />
