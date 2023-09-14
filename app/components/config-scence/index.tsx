@@ -16,12 +16,6 @@ export type IConfigSenceProps = {
   onSend: () => void
 }
 
-const getPlaceHolder = (key) => {
-  if (key === 'CountryName') return 'For Example: United States';
-  if (key === 'HowManyNumbers') return 'For Example: 3';
-  return key;
-}
-
 const ConfigSence: FC<IConfigSenceProps> = ({
   promptConfig,
   inputs,
@@ -61,7 +55,7 @@ const ConfigSence: FC<IConfigSenceProps> = ({
                   <input
                     type="text"
                     className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 "
-                    placeholder={getPlaceHolder(item.key)}
+                    placeholder={item.key === 'CountryName' ? 'For Example: United States' : item.key === 'HowManyNumbers' ? 'For Example: 3' : `${item.name}${!item.required ? `(${t(' For Example: United States')})` : ''}`}
                     value={inputs[item.key]}
                     onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                     maxLength={item.max_length || DEFAULT_VALUE_MAX_LEN}
@@ -70,7 +64,7 @@ const ConfigSence: FC<IConfigSenceProps> = ({
                 {item.type === 'paragraph' && (
                   <textarea
                     className="block w-full h-[104px] p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 "
-                    placeholder={getPlaceHolder(item.key)}
+                    placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
                     value={inputs[item.key]}
                     onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
                   />
