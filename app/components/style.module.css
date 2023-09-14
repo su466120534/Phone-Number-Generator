@@ -11,3 +11,11 @@
   background: url(./icons/star.svg) center center no-repeat;
   background-size: contain;
 }
+
+.iframeContainer {
+  width: 100%;
+  height: 600px;
+  border: none;
+  overflow: hidden;
+  margin-top: 20px;
+}
