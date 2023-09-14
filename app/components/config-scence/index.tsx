@@ -17,9 +17,10 @@ export type IConfigSenceProps = {
 }
 
 const getPlaceHolder = (key) => {
-  return 'For Example: Test';
+  if (key === 'CountryName') return 'For Example: United States';
+  if (key === 'HowManyNumbers') return 'For Example: 3';
+  return key;
 }
-
 
 const ConfigSence: FC<IConfigSenceProps> = ({
   promptConfig,
